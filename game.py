@@ -6,6 +6,12 @@ clock = pygame.time.Clock()
 running = True
 pygame.display.set_caption("Extinction")
 
+from characters import Meteor
+from characters import Dinosaur
+
+player = Meteor()
+enemy = Dinosaur()
+
 while running:
     # poll for events
     # pygame.QUIT event means the user clicked X to close your window
