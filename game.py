@@ -25,6 +25,7 @@ explosion = pygame.image.load("exp.PNG")
 explosion_x = 0
 explosion_y = 0
 FONT = pygame.font.SysFont("freesansbold", 100)
+explode = False
 
 #explosion = pygame.sprite.Sprite()
 #explosion.rect = pygame.image.get_rect(explosion.image)
@@ -51,32 +52,40 @@ while running:
     for i in enemys:
         
         if player.rect.colliderect(i.rect):
-            player.image = pygame.image.load("met1.PNG")
+            player.image = pygame.image.load("./met1.PNG")
             player.image.get_rect()
             explosion_x = player.rect.x
             explosion_y = player.rect.y
             player.rect.center=(360, 0)
             expl.rect.center=(explosion_x, 720);
             print("Hit")
-            freeze = 60 
+            explode = True
+            #freeze = 60 
 
-            num += 1
+            #num += 1
 
-            print(num)
+            #print(num)
 
 
     if player.rect.bottom >= 720:
         playerPosX = player.rect.x
         playerPosY = player.rect.y
 
+    #draw explosion object when hitting the ground
     if player.rect.collidepoint(playerPosX, playerPosY):
         expl.drawGround(screen, playerPosX)
-        freeze = 60
+        #freeze = 60
+        explode = True
+        print("ground collision")
 
-#    if expl.rect.colliderect(enemy.rect):
-#        print("hit")
-#        num += 1
-#        print(num)
+    if explode == True:
+        for i in enemys: 
+            if expl.rect.colliderect(i.rect):
+                print("hit")
+                num += 1
+                print(num)
+        freeze = 60
+        explode = False 
 
 
 

@@ -5,7 +5,7 @@ import random
 class Explosion(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.image = pygame.image.load("exp.PNG")
+        self.image = pygame.image.load("./exp.PNG")
         self.rect = self.image.get_rect()
 
     #draw (important probably)
@@ -20,7 +20,7 @@ class Explosion(pygame.sprite.Sprite):
 class Dinosaur(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.image = pygame.image.load("dino.PNG")
+        self.image = pygame.image.load("./dino.PNG")
         self.rect = self.image.get_rect()
         self.rect.center=(360,720)  #spawn in the middle
         self.rect.bottom=(720)
@@ -61,7 +61,7 @@ class Dinosaur(pygame.sprite.Sprite):
 class Meteor(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.image = pygame.image.load("met1.PNG")
+        self.image = pygame.image.load("./met1.PNG")
         self.rect = self.image.get_rect()
         self.rect.center=(600,200)
 
