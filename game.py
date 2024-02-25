@@ -9,6 +9,8 @@ pygame.display.set_caption("Extinction")
 from characters import Meteor
 from characters import Dinosaur
 
+screen.fill("red")
+
 player = Meteor()
 enemy = Dinosaur()
 
@@ -20,9 +22,14 @@ while running:
             running = False
 
     # fill the screen with a color to wipe away anything from last frame
-    screen.fill("red")
+    #screen.fill("red")
 
     # RENDER YOUR GAME HERE
+    player.update()
+    enemy.move()
+
+    player.draw(screen)
+    enemy.draw(screen)
 
     # flip() the display to put your work on screen
     pygame.display.flip()
