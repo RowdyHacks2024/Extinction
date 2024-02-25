@@ -8,6 +8,7 @@ class Dinosaur(pygame.sprite.Sprite):
         self.image = pygame.image.load("orange-square.png")
         self.rect = self.image.get_rect()
         self.rect.center=(360,720)  #spawn in the middle
+        self.rect.bottom=(720)
         self.move_right = True      #move right initially
 
     def move(self):
@@ -53,6 +54,7 @@ class Meteor(pygame.sprite.Sprite):
 
         self.rect.move_ip(0, 5)
         pressed_keys = pygame.key.get_pressed()
+        #print(self.rect.collidepoint(pygame.mouse.get_pos()));
         
         if self.rect.left > 0:
             if pressed_keys[K_LEFT]:

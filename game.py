@@ -11,6 +11,7 @@ from characters import Dinosaur
 
 player = Meteor()
 enemy = Dinosaur()
+num = 0
 
 while running:
     # poll for events
@@ -23,11 +24,25 @@ while running:
     screen.fill("red")
 
     # RENDER YOUR GAME HERE
+    if player.rect.colliderect(enemy.rect):
+        player.rect.center=(360, -300)
+        num += 1
+        print(num)
+
+
+
     player.update()
+    #print("player:" + str(player.rect.bottom));
+    #print("enemy: " + str(enemy.rect.top));
+
     enemy.move()
+
+    
 
     player.draw(screen)
     enemy.draw(screen)
+
+    
 
     # flip() the display to put your work on screen
     pygame.display.flip()
