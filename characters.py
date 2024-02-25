@@ -7,33 +7,37 @@ class Dinosaur(pygame.sprite.Sprite):
         super().__init__()
         self.image = pygame.image.load("orange-square.png")
         self.rect = self.image.get_rect()
-        self.rect.center=(360,720)
-        self.move_right = True
+        self.rect.center=(360,720)  #spawn in the middle
+        self.move_right = True      #move right initially
 
     def move(self):
 
+        #if dinosaur hits the bounds of the window
         if (self.rect.right > 1280 or self.rect.left < 0):
-            if(self.move_right == True):
+            #invert movement and place the dinosaur back in bounds
+            if(self.move_right == True):    
                 self.move_right = False
                 self.rect.right = 1280
             else:
                 self.move_right = True
                 self.rect.left = 0
 
+        #if dinosaur is within bounds
         else:
+            #move according to previously set direction
             if (self.move_right == True):
                 self.rect.move_ip(3, 0)
             else:
                 self.rect.move_ip(-3, 0)
+
+            #randomly change movement direction
             if (random.randint(0, 50) == 0):
                 if (self.move_right == True):
                     self.move_right = False
                 else:
                     self.move_right = True
- #       if (self.rect.bottom > 600):
- #           self.rect.top = 0
- #           self.rect.center = (random.randint(30,370), 0)
-
+            
+    #draw (important probably)
     def draw(self, surface):
         surface.blit(self.image, self.rect)
 
