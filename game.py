@@ -15,6 +15,13 @@ player = Meteor()
 enemy = Dinosaur()
 num = 0
 bg = pygame.image.load("jurassic.png");
+freeze = 0
+explosion = pygame.image.load("exp.PNG")
+explosion_x = 0
+explosion_y = 0
+#explosion = pygame.sprite.Sprite()
+#explosion.rect = pygame.image.get_rect(explosion.image)
+#print(explosion1.get_rect())
 
 while running:
     # poll for events
@@ -31,14 +38,23 @@ while running:
 
     # RENDER YOUR GAME HERE
     if player.rect.colliderect(enemy.rect):
+        player.image = pygame.image.load("met1.PNG")
+        player.image.get_rect()
+        explosion_x = player.rect.centerx - 64
+        explosion_y = player.rect.centery - 64
         player.rect.center=(360, -300)
+        #explosion1.rect.center=(player.rect.center)
+        freeze = 60
 
         num += 1
         print(num)
 
-
-
-    player.update()
+    
+    if freeze > 0:
+        freeze -= 1
+        screen.blit(explosion,(explosion_x, explosion_y))
+    else:
+        player.update()
     #print("player:" + str(player.rect.bottom));
     #print("enemy: " + str(enemy.rect.top));
 
