@@ -8,11 +8,13 @@ clock = pygame.time.Clock()
 running = True
 pygame.display.set_caption("Extinction")
 
-from characters import Meteor
-from characters import Dinosaur
+from characters import * 
+#from characters import Dinosaur
+
 
 player = Meteor()
 enemy = Dinosaur()
+expl = Explosion()
 num = 0
 bg = pygame.image.load("jurassic.png");
 freeze = 0
@@ -52,7 +54,9 @@ while running:
     
     if freeze > 0:
         freeze -= 1
-        screen.blit(explosion,(explosion_x, explosion_y))
+        expl.rect.center=(explosion_x, explosion_y);
+        expl.draw(screen)
+        #screen.blit(explosion,(explosion_x, explosion_y))
     else:
         player.update()
     #print("player:" + str(player.rect.bottom));

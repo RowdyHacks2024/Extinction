@@ -2,6 +2,18 @@ import pygame
 from pygame.locals import *
 import random
 
+class Explosion(pygame.sprite.Sprite):
+    def __init__(self):
+        super().__init__()
+        self.image = pygame.image.load("exp.PNG")
+        self.rect = self.image.get_rect()
+
+    #draw (important probably)
+    def draw(self, surface):
+        surface.blit(self.image, self.rect)
+
+
+
 class Dinosaur(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
