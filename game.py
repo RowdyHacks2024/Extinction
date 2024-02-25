@@ -21,9 +21,9 @@ expl = Explosion()
 playerPosX = 0;
 playerPosY = 0;
 num = 0
-bg = pygame.image.load("jurassic.png");
+bg = pygame.image.load("./jurassic.png");
 freeze = 0
-explosion = pygame.image.load("exp.PNG")
+explosion = pygame.image.load("./exp.PNG")
 explosion_x = 0
 explosion_y = 0
 FONT = pygame.font.SysFont("freesansbold", 100)
@@ -54,8 +54,8 @@ while running:
     for i in enemys:
         
         if player.rect.colliderect(i.rect):
-            player.image = pygame.image.load("./met1.PNG")
-            player.image.get_rect()
+            #player.image = pygame.image.load("./met1.PNG")
+            #player.image.get_rect()
             explosion_x = player.rect.x
             explosion_y = player.rect.y
             player.rect.center=(360, 0)
