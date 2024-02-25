@@ -5,7 +5,7 @@ import random
 class Dinosaur(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.image = pygame.image.load("orange-square.png")
+        self.image = pygame.image.load("dino.PNG")
         self.rect = self.image.get_rect()
         self.rect.center=(360,720)  #spawn in the middle
         self.rect.bottom=(720)
@@ -46,7 +46,7 @@ class Dinosaur(pygame.sprite.Sprite):
 class Meteor(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.image = pygame.image.load("blue-square.png")
+        self.image = pygame.image.load("met1.PNG")
         self.rect = self.image.get_rect()
         self.rect.center=(600,200)
 

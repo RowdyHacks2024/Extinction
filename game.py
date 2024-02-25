@@ -1,4 +1,6 @@
 import pygame
+import sys
+from pygame.locals import *
 
 pygame.init()
 screen = pygame.display.set_mode((1280, 720))
@@ -12,6 +14,7 @@ from characters import Dinosaur
 player = Meteor()
 enemy = Dinosaur()
 num = 0
+bg = pygame.image.load("jurassic.png");
 
 while running:
     # poll for events
@@ -21,11 +24,15 @@ while running:
             running = False
 
     # fill the screen with a color to wipe away anything from last frame
-    screen.fill("red")
+
+    #screen.fill("red")
+    screen.blit(bg,(0, 0))
+
 
     # RENDER YOUR GAME HERE
     if player.rect.colliderect(enemy.rect):
         player.rect.center=(360, -300)
+
         num += 1
         print(num)
 
