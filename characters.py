@@ -7,13 +7,22 @@ class Dinosaur(pygame.sprite.Sprite):
         super().__init__()
         self.image = pygame.image.load("orange-square.png")
         self.rect = self.image.get_rect()
-        self.rect.center=(400,400)
+        self.rect.center=(360,720)
+        self.move_right = True
 
     def move(self):
-        self.rect.move_ip(0,10)
-        if (self.rect.bottom > 600):
-            self.rect.top = 0
-            self.rect.center = (random.randint(30,370), 0)
+        if (self.move_right == True):
+            self.rect.move_ip(3, 0)
+        else:
+            self.rect.move_ip(-3, 0)
+        if (random.randint(0, 50) == 0):
+            if (self.move_right == True):
+                self.move_right = False
+            else:
+                self.move_right = True
+ #       if (self.rect.bottom > 600):
+ #           self.rect.top = 0
+ #           self.rect.center = (random.randint(30,370), 0)
 
     def draw(self, surface):
         surface.blit(self.image, self.rect)
@@ -27,6 +36,8 @@ class Meteor(pygame.sprite.Sprite):
         self.rect.center=(600,200)
 
     def update(self):
+
+        self.rect.move_ip(0, 5)
         pressed_keys = pygame.key.get_pressed()
         
         if self.rect.left > 0:
