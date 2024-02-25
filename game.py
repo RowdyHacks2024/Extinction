@@ -14,7 +14,9 @@ from characters import *
 
 white = (255, 255, 255)
 player = Meteor()
-enemys = [Dinosaur(), Dinosaur()]
+enemys = []
+for i in range(7):
+    enemys.append(Dinosaur())
 expl = Explosion()
 playerPosX = 0;
 playerPosY = 0;
@@ -84,6 +86,7 @@ while running:
                 print("hit")
                 num += 1
                 print(num)
+                enemys.remove(i)
         freeze = 60
         explode = False 
 

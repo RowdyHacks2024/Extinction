@@ -25,6 +25,7 @@ class Dinosaur(pygame.sprite.Sprite):
         self.rect.center=(360,720)  #spawn in the middle
         self.rect.bottom=(720)
         self.move_right = True      #move right initially
+        #self.alive = True
 
     def move(self):
 
@@ -55,6 +56,7 @@ class Dinosaur(pygame.sprite.Sprite):
             
     #draw (important probably)
     def draw(self, surface):
+        #only draw if dinosaur is still alive
         surface.blit(self.image, self.rect)
 
 
