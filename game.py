@@ -40,46 +40,45 @@ while running:
     screen.blit(bg,(0, 0))
 
 
-    # RENDER YOUR GAME HERE
+    # RENDER GAME HERE
     if player.rect.colliderect(enemy.rect):
         player.image = pygame.image.load("met1.PNG")
         player.image.get_rect()
-        explosion_x = player.rect.centerx - 64
-        explosion_y = player.rect.centery - 64
+        explosion_x = player.rect.x
+        explosion_y = player.rect.y
         player.rect.center=(360, -300)
-        #explosion1.rect.center=(player.rect.center)
-        freeze = 60
+        expl.rect.center=(explosion_x, 720);
+        print("Hit")
+        freeze = 120 
 
         num += 1
         print(num)
 
-        print(screen.get_rect())
 
     if player.rect.bottom >= 720:
         playerPosX = player.rect.x
         playerPosY = player.rect.y
-        print(playerPosX)
-        print(playerPosY)
 
     if player.rect.collidepoint(playerPosX, playerPosY):
         expl.drawGround(screen, playerPosX)
-        print(expl.rect.bottom)
+        freeze = 120
+
+    if expl.rect.colliderect(enemy.rect):
+        print("hit")
+        num += 1
+        print(num)
+
+
 
     
     if freeze > 0:
         freeze -= 1
-        expl.rect.center=(explosion_x, 720);
         expl.draw(screen)
-        #expl.ground_explosion(screen)
-        #screen.blit(explosion,(explosion_x, explosion_y))
-    else:
-        player.update()
-    #print("player:" + str(player.rect.bottom));
+
+    player.update()
     #print("enemy: " + str(enemy.rect.top));
 
     enemy.move()
-
-    
 
     player.draw(screen)
     enemy.draw(screen)
