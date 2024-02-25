@@ -12,6 +12,7 @@ from characters import *
 #from characters import Dinosaur
 
 
+white = (255, 255, 255)
 player = Meteor()
 enemy = Dinosaur()
 expl = Explosion()
@@ -23,6 +24,7 @@ freeze = 0
 explosion = pygame.image.load("exp.PNG")
 explosion_x = 0
 explosion_y = 0
+FONT = pygame.font.SysFont("freesansbold", 100)
 #explosion = pygame.sprite.Sprite()
 #explosion.rect = pygame.image.get_rect(explosion.image)
 #print(explosion1.get_rect())
@@ -38,6 +40,10 @@ while running:
 
     #screen.fill("red")
     screen.blit(bg,(0, 0))
+    text = FONT.render(str(num), True, white)
+    textRect =  text.get_rect()
+    textRect.center = (400//2, 400//2)
+    screen.blit(text, textRect)
 
 
     # RENDER GAME HERE
@@ -46,12 +52,13 @@ while running:
         player.image.get_rect()
         explosion_x = player.rect.x
         explosion_y = player.rect.y
-        player.rect.center=(360, -300)
+        player.rect.center=(360, 0)
         expl.rect.center=(explosion_x, 720);
         print("Hit")
-        freeze = 120 
+        freeze = 60 
 
         num += 1
+
         print(num)
 
 
@@ -61,12 +68,12 @@ while running:
 
     if player.rect.collidepoint(playerPosX, playerPosY):
         expl.drawGround(screen, playerPosX)
-        freeze = 120
+        freeze = 60
 
-    if expl.rect.colliderect(enemy.rect):
-        print("hit")
-        num += 1
-        print(num)
+#    if expl.rect.colliderect(enemy.rect):
+#        print("hit")
+#        num += 1
+#        print(num)
 
 
 
