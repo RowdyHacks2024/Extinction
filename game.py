@@ -1,23 +1,28 @@
+# "Extinction"
+# by William Mejia and Zachary Sager
+
+#imports
 import pygame
 import sys
 from pygame.locals import *
+from characters import *
 
+#initialize game properties
 pygame.init()
 screen = pygame.display.set_mode((1280, 720))
 clock = pygame.time.Clock()
 running = True
 pygame.display.set_caption("Extinction")
-
-from characters import * 
-#from characters import Dinosaur
-
-
 white = (255, 255, 255)
+
+#set up game objects
 player = Meteor()
 enemys = []
 for i in range(7):
     enemys.append(Dinosaur())
 expl = Explosion()
+
+#variables
 playerPosX = 0;
 playerPosY = 0;
 num = 0
@@ -31,10 +36,8 @@ explode = False
 stage = 1
 score = False
 
-#explosion = pygame.sprite.Sprite()
-#explosion.rect = pygame.image.get_rect(explosion.image)
-#print(explosion1.get_rect())
 
+# MAIN GAME LOOP
 while running:
     # poll for events
     # pygame.QUIT event means the user clicked X to close your window
@@ -42,19 +45,19 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-    #stage change when all dinosaurs killed
+    #change to dinosaur stage when all dinosaurs are killed
     if len(enemys) == 0:
         stage = 2
-        enemys = []
-        for i in range(7):
+        enemys = []     #clear enemies for meteor objects
+        for i in range(7):  #make 7 meteors
             enemys.append(EnemyMeteor())
-        player = PlayerDinosaur()
+        player = PlayerDinosaur()   #change player to dinosaur
 
 
     #PLAY AS METEOR
     if stage == 1:
 
-        # fill the screen with a color to wipe away anything from last frame
+        #regenerate frame
 
         #screen.fill("red")
         screen.blit(bg,(0, 0))
