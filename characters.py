@@ -12,6 +12,9 @@ class Explosion(pygame.sprite.Sprite):
     def draw(self, surface):
         surface.blit(self.image, self.rect)
 
+    def drawGround(self, surface,x):
+        self.rect.center=(x, 720)
+        surface.blit(self.image, self.rect)
 
 
 class Dinosaur(pygame.sprite.Sprite):

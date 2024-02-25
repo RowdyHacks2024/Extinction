@@ -15,6 +15,8 @@ from characters import *
 player = Meteor()
 enemy = Dinosaur()
 expl = Explosion()
+playerPosX = 0;
+playerPosY = 0;
 num = 0
 bg = pygame.image.load("jurassic.png");
 freeze = 0
@@ -51,11 +53,24 @@ while running:
         num += 1
         print(num)
 
+        print(screen.get_rect())
+
+    if player.rect.bottom >= 720:
+        playerPosX = player.rect.x
+        playerPosY = player.rect.y
+        print(playerPosX)
+        print(playerPosY)
+
+    if player.rect.collidepoint(playerPosX, playerPosY):
+        expl.drawGround(screen, playerPosX)
+        print(expl.rect.bottom)
+
     
     if freeze > 0:
         freeze -= 1
-        expl.rect.center=(explosion_x, explosion_y);
+        expl.rect.center=(explosion_x, 720);
         expl.draw(screen)
+        #expl.ground_explosion(screen)
         #screen.blit(explosion,(explosion_x, explosion_y))
     else:
         player.update()
